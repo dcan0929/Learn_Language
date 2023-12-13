@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #87CEEB; /* 연한 하늘색 배경 */
+            color: #F5F5DC; /* 아이보리 색 텍스트 */
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #F5F5DC; /* 아이보리 색 텍스트 */
+            border: 2px solid #F5F5DC; /* 아이보리 색 테두리 */
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>퀴즈 결과</h1>
+
+    <p>아래는 당신의 퀴즈 결과입니다:</p>
+
+    <ul>
+        {% for question, word, user_answer, is_correct in quiz_results %}
+            <li>
+                <strong>단어:</strong> {{ word }}<br>
+                <strong>번역:</strong> {{ user_answer }}<br>
+                {% if is_correct %}
+                    <span style="color: green;">정답입니다!</span>
+                {% else %}
+                    <span style="color: red;">죄송합니다, 정답은 '{{ question }}'입니다.</span>
+                {% endif %}
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="/quiz">다시 퀴즈 풀기</a>
+</body>
+</html>

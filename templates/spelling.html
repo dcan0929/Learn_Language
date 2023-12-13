@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelling Check</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #87CEEB;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: ivory;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 70%;
+            height: 100px;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 15px 30px;
+            background-color: #2763d9;
+            color: ivory;
+            border: none;
+            cursor: pointer;
+        }
+
+        div {
+            font-size: 20px;
+            margin-top: 30px;
+            color: ivory;
+        }
+
+        .back-button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 20px;
+            background-color: #2763d9;
+            color: ivory;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spelling Check</h1>
+    <textarea id="inputText" placeholder="Enter a sentence"></textarea>
+    <br>
+    <button onclick="runSpellingCheck()">Check Spelling</button>
+    <div id="outputResult"></div>
+
+    <script>
+        function runSpellingCheck() {
+            var userInput = document.getElementById('inputText').value;
+
+            fetch('/run-spelling-check', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ input: userInput }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayResult(data);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function displayResult(result) {
+            var outputDiv = document.getElementById('outputResult');
+            outputDiv.innerHTML = "";
+
+            if (result.errors.length === 0) {
+                outputDiv.innerHTML = "No spelling errors found.";
+            } else {
+                outputDiv.innerHTML = "Spelling errors and suggestions:<br>";
+                result.errors.forEach(function (error) {
+                    outputDiv.innerHTML += `${error.word}: ${error.suggestions.join(', ')}<br>`;
+                });
+            }
+        }
+
+        function goBack() {
+            window.location.href = '/back-to-main';
+        }
+    </script>
+
+    <button class="back-button" onclick="goBack()">돌아가기</button>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Page</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #87CEEB;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: ivory;
+            margin-bottom: 60px;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 15px 30px;
+            background-color: #2763d9;
+            color: ivory;
+            border: none;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+            margin-bottom: 50px;
+        }
+
+        .back-button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 20px;
+            background-color: #2763d9;
+            color: ivory;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>English Page</h1>
+    <button onclick="window.location.href='/spelling'">Spelling Check</button>
+    <button onclick="window.location.href='/grammar'">Grammar Check</button>
+    <button onclick="window.location.href='/quiz'">Quiz</button>
+
+    <button class="back-button" onclick="goBack()">돌아가기</button>
+
+    <script>
+        function executeCode(route) {
+            fetch(route)
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error:', error));
+        }
+
+        function goBack() {
+            window.location.href = '/back-to-main';
+        }
+    </script>
+</body>
+
+</html>

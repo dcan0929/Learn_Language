@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #87CEEB;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 80px;
+            color: ivory;
+        }
+
+        label {
+            font-size: 24px;
+            color: ivory;
+        }
+
+        select {
+            font-size: 24px;
+            background-color: #2763d9;
+            margin-bottom: 80px;
+            padding: 10px;
+            color: ivory;
+            text-align: center;
+        }
+
+        button {
+            font-size: 26px;
+            background-color: #2763d9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Language Education</h1>
+    <form id="languageForm">
+        <label for="language">언어를 선택하세요:</label>
+        <select id="language" name="language">
+            <option value="english">영어</option>
+            <option value="japanese">일본어</option>
+            <option value="chinese">중국어</option>
+            <option value="spanish">스페인어</option>
+        </select>
+        <br>
+        <button type="button" onclick="redirectToLanguage()">진행!</button>
+
+        <script>
+            function redirectToLanguage() {
+                var language = document.getElementById('language').value;
+
+                switch (language) {
+                    case 'english':
+                        window.location.href = '/english';
+                        break;
+                    case 'japanese':
+                        window.location.href = '/japanese';
+                        break;
+                    case 'chinese':
+                        window.location.href = '/chinese';
+                        break;
+                    case 'spanish':
+                        window.location.href = '/spanish';
+                        break;
+                    default:
+                        break;
+                }
+            }
+        </script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Page</title>
+    <style>
+        body {
+            background-color: #87CEEB;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: ivory;
+            text-align: center;
+            margin-bottom: 300px;
+        }
+
+        .back-button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 20px;
+            background-color: #2763d9;
+            color: ivory;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spanish Page</h1>
+
+    <script>
+        function goBack() {
+            window.location.href = '/back-to-main';
+        }
+    </script>
+    <button class="back-button" onclick="goBack()">돌아가기</button>
+</body>
+</html>

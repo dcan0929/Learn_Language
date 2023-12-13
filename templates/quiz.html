@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            background-color: #87CEEB;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: ivory;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #2763d9;
+            color: ivory;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>영어 단어 퀴즈</h1>
+
+    <form action="/quiz" method="post">
+        {% for question, answer in quiz_questions %}
+            <div>
+                <p><strong>번역:</strong> {{ question }}</p>
+                <p><strong>단어:</strong> <input type="text" name="{{ answer }}" required></p>
+                <hr>
+            </div>
+        {% endfor %}
+        <button type="submit">제출</button>
+    </form>
+
+    <script>
+        function goBack() {
+            window.location.href = '/back-to-main';
+        }
+    </script>
+    <button onclick="goBack()">돌아가기</button>
+</body>
+</html>
